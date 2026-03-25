@@ -1,0 +1,16 @@
+# Dependências do projeto
+flask
+psycopg2
+python-dotenv
+pandas
+flask-cors
+sqlalchemy
+Flask
+pyodbc
+pandas
+twilio
+Flask-Cors
+openpyxl
+gunicorn
+psycopg2
+waitress

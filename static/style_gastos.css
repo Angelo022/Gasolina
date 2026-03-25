@@ -1,0 +1,67 @@
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 12px; /* Aumentado para melhor legibilidade */
+    text-align: left;
+}
+
+th {
+    background-color: #f2f2f2;
+    font-weight: bold; /* Negrito para cabeçalhos */
+}
+
+tr:hover {
+    background-color: #f1f1f1;
+}
+
+/* Estilizando os botões */
+button {
+    background-color: #007BFF; /* Azul */
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px; /* Bordas arredondadas */
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0056b3; /* Azul mais escuro ao passar o mouse */
+}
+
+header {
+    background-color: rgb(0, 153, 255);
+    color: white;
+    padding: 10px;
+    text-align: center;
+}
+header img {
+    max-width: 300px; /* Ajuste o tamanho da imagem conforme necessário */
+}
+
+/* Responsividade */
+@media (max-width: 600px) {
+    table, thead, tbody, th, td, tr {
+        display: block; /* Tabela se torna um bloco em telas pequenas */
+    }
+    th {
+        display: none; /* Esconde cabeçalhos em telas pequenas */
+    }
+    td {
+        text-align: right; /* Alinha texto à direita */
+        position: relative;
+        padding-left: 50%; /* Espaço para o texto */
+    }
+    td::before {
+        content: attr(data-label); /* Adiciona rótulos para cada célula */
+        position: absolute;
+        left: 0;
+        width: 50%;
+        padding-left: 10px;
+        font-weight: bold;
+        text-align: left;
+    }
+}

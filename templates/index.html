@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Abastecimento</title>
+    <link rel="stylesheet" href="../static/style.css" />
+</head>
+<body>
+    <header>
+        <img src="../static/LOGO QUALITAT.png" alt="Logo Qualitat" width="300" height="auto" />
+        <h1>ABASTECIMENTO</h1>
+    </header>
+    <h1>Registro de Abastecimento</h1>
+    <div>
+        <label for="numeroOnibusInput">Número do Ônibus:</label>
+<input
+    type="text"
+    id="numeroOnibusInput"
+    list="numerosOnibusList"
+    placeholder="Digite o número do ônibus"
+    autocomplete="off"
+/>
+<datalist id="numerosOnibusList">
+    <option value="101E"></option>
+    <option value="102E"></option>
+    <option value="103E"></option>
+    <option value="104E"></option>
+    <option value="107"></option>
+    <option value="108"></option>
+    <option value="109"></option>
+    <option value="110"></option>
+    <option value="111E"></option>
+    <option value="112"></option>
+    <option value="113"></option>
+    <option value="114"></option>
+    <option value="115"></option>
+    <option value="116"></option>
+    <option value="117"></option>
+    <option value="118"></option>
+    <option value="200"></option>
+    <option value="201"></option>
+    <option value="202"></option>
+    <option value="203"></option>
+    <option value="300E"></option>
+    <option value="301E"></option>
+    <option value="302E"></option>
+    <option value="303E"></option>
+    <option value="304E"></option>
+    <option value="305E"></option>
+    <option value="306E"></option>
+    <option value="307E"></option>
+    <option value="308E"></option>
+    <option value="309E"></option>
+    <option value="310E"></option>
+    <option value="400E"></option>
+    <option value="401E"></option>
+    <option value="402E"></option>
+    <option value="403E"></option>
+    <option value="404E"></option>
+    <option value="405E"></option>
+    <option value="406E"></option>
+    <option value="700"></option>
+    <option value="701"></option>
+    <option value="801"></option>
+    <option value="802"></option>
+    <option value="1000"></option>
+    <option value="1001"></option>
+    <option value="1004"></option>
+    <option value="1005"></option>
+    <option value="1100"></option>
+    <option value="1200"></option>
+    <option value="1600"></option>
+    <option value="1700"></option>
+    <option value="1800"></option>
+    <option value="1900"></option>
+    <option value="2200"></option>
+    <option value="2400"></option>
+    <option value="2600"></option>
+    <option value="2700"></option>
+    <option value="2800"></option>
+    <option value="2900"></option>
+    <option value="4000"></option>
+    <option value="4100"></option>
+    <option value="4200"></option>
+    <option value="4300"></option>
+    <option value="4400"></option>
+    <option value="4600"></option>
+    <option value="6400E"></option>
+    <option value="6500E"></option>
+    <option value="6600E"></option>
+    <option value="6700"></option>
+    <option value="7001"></option>
+    <option value="7002"></option>
+    <option value="7003"></option>
+    <option value="7004"></option>
+    <option value="8100"></option>
+    <option value="8200"></option>
+    <option value="8300"></option>
+    <option value="8400"></option>
+    <option value="8500"></option>
+    <option value="8600"></option>
+    <option value="8700"></option>
+    <option value="8900"></option>
+    <option value="9000"></option>
+    <option value="9100"></option>
+    <option value="9200"></option>
+    <option value="9300"></option>
+    <option value="9400"></option>
+    <option value="9500"></option>
+    <option value="9600"></option>
+    <option value="1300"></option>
+    <option value="1400"></option>
+    <option value="2000"></option>
+    <option value="2001"></option>
+    <option value="2002"></option>
+    <option value="2003"></option>
+    <option value="2300"></option>
+    <option value="3000E"></option>
+    <option value="3100"></option>
+    <option value="3200"></option>
+    <option value="3300"></option>
+    <option value="3400"></option>
+    <option value="3600E"></option>
+    <option value="3700E"></option>
+    <option value="3800E"></option>
+    <option value="3900E"></option>
+    <option value="4700"></option>
+    <option value="4800"></option>
+    <option value="4900"></option>
+    <option value="5000"></option>
+    <option value="5100"></option>
+    <!-- <option value="5300E"></option> -->
+    <option value="5412"></option>
+    <option value="5512"></option>
+    <option value="5800"></option>
+    <option value="5900"></option>
+    <option value="6000"></option>
+    <option value="6100"></option>
+    <option value="6800E"></option>
+    <option value="6900E"></option>
+    <option value="7000E"></option>
+    <option value="7100E"></option>
+    <option value="7200E"></option>
+    <option value="7300"></option>
+    <option value="7600E"></option>
+    <option value="7700"></option>
+    <option value="7800"></option>
+    <option value="7900"></option>
+    <option value="8000"></option>
+    <!-- <option value="8800E"></option> -->
+    <option value="9700"></option>
+    <option value="HILUX"></option>
+    <option value="GALÃO"></option>
+    <option value="OFICINA"></option>
+    <option value="1003"></option>
+    <option value="1002"></option>
+</datalist>
+
+        <br /><br />
+        <label for="tipoFrotaSelect">Tipo de Frota:</label>
+        <select id="tipoFrotaSelect">
+            <option value="">Selecione</option>
+            <option value="Van">Van</option>
+            <option value="Micro-Ônibus">Micro-Ônibus</option>
+            <option value="Ônibus">Ônibus</option>
+            <option value="Socios">Carro/Galão</option>
+            <option value="OFICINA">OFICINA</option>
+        </select>
+        <br /><br />
+        <label for="tipoAbastecimentoSelect">Tipo de Abastecimento:</label>
+        <select id="tipoAbastecimentoSelect">
+            <option value="interno">Interno</option>
+            <option value="externo">Externo</option>
+        </select>
+        <br /><br />
+        <label for="litrosInput">Litros:</label>
+        <input type="number" id="litrosInput" autocomplete="off" />
+        <br /><br />
+        <label for="motoristaInput">Motorista:</label>
+        <input type="text" id="motoristaInput" list="motoristasList" autocomplete="off" />
+<datalist id="motoristasList">
+    <option value="ADEMILSON FRANCISCO DAMACENO - MEI"></option>
+    <option value="ADEMIR JOSE MIORALE"></option>
+    <option value="ADRIANO ARMELIN"></option>
+    <option value="ALTAIR ROBERTO DA SILVA"></option>
+    <option value="AMILTON DOS SANTOS LOPES"></option>
+    <option value="ANA PAULA VIEIRA"></option>
+    <option value="ANGELINO APARECIDO ALVES"></option>
+    <option value="ARLISON DA SILVA SOUZA"></option>
+    <option value="ANTONIO CEZAR TELES DOS SANTOS"></option>
+    <option value="ANTONIO CARLOS VIDAL - MEI"></option>
+    <option value="ANTONIO JOSE PEREIRA - MEI"></option>
+    <option value="BENEDITO LEOPOLDO ALVES"></option>
+    <option value="CARLOS EDUARDO DAMBROZ - MEI"></option>
+    <option value="CARLOS ROBERTO MERISSE"></option>
+    <option value="CARLA ISABEL SANTOS VENCESLAU"></option>
+    <option value="CLAUDIA SIMONE DA CRUZ"></option>
+    <option value="CLAUDINEI TEODORO ARRUDA - MEI"></option>
+    <option value="CLAUDIOMAR SILVA NOVAIS"></option>
+    <option value="DANYLO PEGORARO MARCELO"></option>
+    <option value="DAVI NEVE GOMES"></option>
+    <option value="DHEMERSON HIAGO S. CASTRO"></option>
+    <option value="DIVANILSON LOPES DA SILVA"></option>
+    <option value="DOUGLAS CARRENHO GAMER - MEI"></option>
+    <option value="EDER POLIDORIO (SOCIO)"></option>
+    <option value="EDIVALDO LEITE FONSECA - MEI"></option>
+    <option value="ERIWELTON MARTINS DE SOUZA PAIXÃO"></option>
+    <option value="EDSONIA DE BARROS RODRIGUES"></option>
+    <option value="ELAINE APARECIDA MACHADO DOS SANTOS"></option>
+    <option value="EMERSON ROGERIO ORMENEZE - MEI"></option>
+    <option value="FABIANO SOUZA DE FRANCA"></option>
+    <option value="FABIO SOUZA LIMA"></option>
+    <option value="FABIO ROGÉRIO DE QUEIROZ"></option>
+    <option value="FLAVIO GIMENEZ (SOCIO)"></option>
+    <option value="FRANCISCO CARLOS B ALMEIDA"></option>
+    <option value="GERALDO MARCELINO DE FREITAS"></option>
+    <option value="GERALDO SOARES DE OLIVEIRA"></option>
+    <option value="GERSON DOS REIS"></option>
+    <option value="GERFESSON LIMA SANTOS"></option>
+    <option value="GILMAR JOSÉ DE SOUZA"></option>
+    <option value="GILMAR VIEIRA DOS SANTOS"></option>
+    <option value="GILMAR CLEMENTE DO NASCIMENTO"></option>
+    <option value="GILVANIR PEREIRA ROCHA"></option>
+    <option value="GENILDO DOMINGOS"></option>
+    <option value="IVAN PEREIRA DA SILVA - MEI"></option>
+    <option value="IVANILDO RODRIGUES LINS"></option>
+    <option value="JAQUELINE SOUZA NASCIMENTO"></option>
+    <option value="JHONATAN ALVES DA SILVA"></option>
+    <option value="JOAO BATISTA DE OLIVEIRA"></option>
+    <option value="JOAO BAPTISTA"></option>
+    <option value="JOAQUIM GARCIA - MEI"></option>
+    <option value="JORGE DOS SANTOS"></option>
+    <option value="JORGE RODRIGUES DE SOUZA"></option>
+    <option value="JOSE DA LUZ AMARAL - MEI"></option>
+    <option value="JOSE APARECIDO CORDEIRO"></option>
+    <option value="JOSE CORREIA DOS SANTOS"></option>
+    <option value="JOSE GERALDO M. DA SILVA"></option>
+    <option value="JOSE LOURENÇO PEREIRA"></option>
+    <option value="JOSE RAIMUNDO NASCIMENTO"></option>
+    <option value="JOSE SILVESTRE DA SILVA"></option>
+    <option value="JERRY ADRIANO DA SILVA"></option>
+    <option value="JOSE APARECIDO DE LIMA VIEIRA"></option>
+    <option value="JOSE CARLOS COSTA"></option>
+    <option value="JOSE FRANCISCO DOS SANTOS JUNIOR"></option>
+    <option value="JOSE FRANCISCO AMSTALDEN - MEI"></option>
+    <option value="JOSE GILDO SOARES GOMES"></option>
+    <option value="JULIANO DA ROCHA"></option>
+    <option value="JULIANO ALVES"></option>
+    <option value="JULIO CESAR"></option>
+    <option value="KATIA C DE OLIVEIRA SILVA"></option>
+    <option value="KELIANO DE LIRA LIMA"></option>
+    <option value="KELLY ARAUJO ROCHA"></option>
+    <option value="LUIZ CARLOS COLIN - MEI"></option>
+    <option value="LUIS FERNANDO DA SILVA CARDOSO"></option>
+    <option value="LUIS CARLOS BARBATE"></option>
+    <option value="MAILTON T. DE OLIVEIRA"></option>
+    <option value="MARIA DO CARMO SILVA FERREIRA"></option>
+    <option value="MARCELO FRANCISCO ALBINO - MEI"></option>
+    <option value="MARCELO ROQUE DE GOES"></option>
+    <option value="MARCO AURELIO VIEIRA"></option>
+    <option value="MARCOS GOMES DA SILVA"></option>
+    <option value="MARCO ANTONIO DA SILVA"></option>
+    <option value="MARINALDO JOSE DA SILVA"></option>
+    <option value="MAURINDO ALVES DE OLIVEIRA"></option>
+    <option value="MAURICIO MARINANGELO - MEI"></option>
+    <option value="MAURO SERGIO BARBOSA"></option>
+    <option value="MICHAEL FILIPE BATISTA LEITE"></option>
+    <option value="MIRIAN GISELI BIASOLI VIEIRA"></option>
+    <option value="NELSON APARECIDO DA SILVA"></option>
+    <option value="NELSON BATISTA - MEI"></option>
+    <option value="ODAIR MULLER DE OLIVEIRA"></option>
+    <option value="OSMAR SOARES BISPO"></option>
+    <option value="PAULO CESAR MARCELLO"></option>
+    <option value="PAULO DE SOUZA SANTOS"></option>
+    <option value="PAULO CESAR LIMA DA SILVA"></option>
+    <option value="PAULO FEITOZA DE LIMA - MEI"></option>
+    <option value="PAULO ROBERTO DA SILVA"></option>
+    <option value="PEDRO DOS SANTOS LOPES"></option>
+    <option value="PEDRO PEREIRA DA SILVA V"></option>
+    <option value="PAULO RENATO TODÃO"></option>
+    <option value="PEDRO PEREIRA DA SILVA Q"></option>
+    <option value="RAIMUNDO BATISTA SOARES"></option>
+    <option value="RAQUEL HAMESTER - MEI"></option>
+    <option value="ROBSON AP. MENEGHESSO"></option>
+    <option value="RUAN CARLOS RODRIGUES"></option>
+    <option value="REGIANI MARLI PAULO MORI"></option>
+    <option value="ROSANGELA RODRIGUES PINTO DA SILVA"></option>
+    <option value="ROMILDO RODRIGUES DA CRUZ - MEI"></option>
+    <option value="ROSENILDA VILHALVA VIEIRA - MEI"></option>
+    <option value="SEBASTIÃO TRIUNFO FILHO"></option>
+    <option value="SILVIO LUIZ"></option>
+    <option value="TANIA CRISTINA B. DA SILVA"></option>
+    <option value="VALDEY OLIMPIO"></option>
+    <option value="VALDIR DA SILVA BARIANI"></option>
+    <option value="VALDEMIR SANTOS DE SANTANA"></option>
+    <option value="VANDERLEY F. DA SILVA"></option>
+    <option value="VILSON PEREIRA DA COSTA"></option>
+    <option value="VITOR MIGUEL SILVA"></option>
+    <option value="VIVIANA BERNARDO DE ALMEIDA - MEI"></option>
+    <option value="VLADIMIR ARAUJO"></option>
+    <option value="WAGNER APARECIDO PRETE"></option>
+    <option value="WALMIR JOSE ROSSI"></option>
+    <option value="WELLINGTON PEREIRA DA SILVA"></option>
+    <option value="WESLEI ALVES DA SILVA"></option>
+</datalist>
+        <br /><br />
+        <label for="quemAbasteceuInput">Quem Abasteceu:</label>
+        <input type="text" id="quemAbasteceuInput" list="quemAbasteceuList" autocomplete="off" />
+        <datalist id="quemAbasteceuList">
+            <option value="Clei"></option>
+            <option value="Umberto"></option>
+            <option value="Dario"></option>
+            <option value="Robinho"></option>
+            <option value="Eder"></option>
+            <option value="Eliana"></option>
+            <option value="Elias"></option>
+            <option value="Adilson"></option>
+            <option value="Edilson"></option>
+            <option value="FAZ GRAN"></option>
+            <option value="AMIGÃOZAO"></option>
+            <option value="ALVORADA"></option>
+        </datalist>
+        <br /><br />
+        <label for="numeroControleInput">Número de Controle:</label>
+        <input type="text" id="numeroControleInput" autocomplete="off" />
+        <br /><br />
+        <label for="quilometragemInput">Quilometragem:</label>
+        <input type="number" id="quilometragemInput" autocomplete="off" />
+        <br /><br />
+        <label for="horaInput">Hora:</label>
+        <input type="time" id="horaInput" />
+        <br /><br />
+        <div>
+            <label for="data">Data:</label>
+            <input
+                type="date"
+                id="data"
+                name="data"
+                style="width: 250px; margin-bottom: 10px;"
+                autocomplete="off"
+            />
+        </div>
+
+        <button type="button" id="submitGasto">REGISTRAR ABASTECIMENTO</button>
+    </div>
+
+    <h2>
+        Quantidade de Combustível Disponível:
+        <span id="quantidadeDisponivel"></span>
+    </h2>
+
+    <h1>Reabastecer Combustível</h1>
+    <div>
+        <label for="litrosReabastecerInput">Litros a Reabastecer:</label>
+        <input type="number" id="litrosReabastecerInput" autocomplete="off" />
+        <br /><br />
+        <button type="button" id="submitReabastecer">REABASTECER</button>
+    </div>
+
+    <button id="irParaAbastecimentoButton" style="margin-top: 10px;">
+        Ir para Abastecimentos
+    </button>
+    <!-- Botão para acessar a página de gastos -->
+
+    <div id="message" style="color: green; margin-top: 10px;"></div>
+    <!-- Div para exibir a mensagem -->
+
+<script>
+        document.addEventListener("DOMContentLoaded", function () {
+            // Definindo a data e a hora atuais
+            const today = new Date();
+            const dataInput = document.getElementById("data");
+            const horaInput = document.getElementById("horaInput");
+
+            if (dataInput && horaInput) {
+                dataInput.value = today.toISOString().split("T")[0]; // Data no formato YYYY-MM-DD
+                horaInput.value = today.toTimeString().split(" ")[0].substring(0, 5); // Hora no formato HH:MM
+
+                // Atualiza a hora a cada minuto
+                setInterval(() => {
+                    const now = new Date();
+                    horaInput.value = now.toTimeString().split(" ")[0].substring(0, 5); // Atualiza a hora
+                }, 60000); // 60000 ms = 1 minuto
+            }
+
+            // Lógica para habilitar/desabilitar o campo de Número de Controle
+            const tipoAbastecimentoSelect = document.getElementById("tipoAbastecimentoSelect");
+            const numeroControleInput = document.getElementById("numeroControleInput");
+
+            if (tipoAbastecimentoSelect && numeroControleInput) {
+                tipoAbastecimentoSelect.addEventListener("change", function () {
+                    if (this.value === "externo") {
+                        numeroControleInput.disabled = true; // Desabilita o campo
+                        numeroControleInput.value = ""; // Limpa o campo
+                    } else {
+                        numeroControleInput.disabled = false; // Habilita o campo
+                    }
+                });
+            }
+
+            const submitGastoBtn = document.getElementById("submitGasto");
+            if (submitGastoBtn) {
+                submitGastoBtn.addEventListener("click", function () {
+                    const numeroOnibusInput = document.getElementById("numeroOnibusInput");
+                    const litrosInput = document.getElementById("litrosInput");
+                    const motoristaInput = document.getElementById("motoristaInput");
+                    const numeroControleInput = document.getElementById("numeroControleInput");
+                    const quemAbasteceuInput = document.getElementById("quemAbasteceuInput");
+                    const quilometragemInput = document.getElementById("quilometragemInput");
+                    const horaInput = document.getElementById("horaInput");
+                    const dataInput = document.getElementById("data");
+                    const tipoFrotaSelect = document.getElementById("tipoFrotaSelect");
+                    const tipoAbastecimentoSelect = document.getElementById("tipoAbastecimentoSelect");
+
+                    if (!numeroOnibusInput) console.error("Elemento numeroOnibusInput não encontrado.");
+                    if (!litrosInput) console.error("Elemento litrosInput não encontrado.");
+                    if (!motoristaInput) console.error("Elemento motoristaInput não encontrado.");
+                    if (!numeroControleInput) console.error("Elemento numeroControleInput não encontrado.");
+                    if (!quemAbasteceuInput) console.error("Elemento quemAbasteceuInput não encontrado.");
+                    if (!quilometragemInput) console.error("Elemento quilometragemInput não encontrado.");
+                    if (!horaInput) console.error("Elemento horaInput não encontrado.");
+                    if (!dataInput) console.error("Elemento dataInput não encontrado.");
+                    if (!tipoFrotaSelect) console.error("Elemento tipoFrotaSelect não encontrado.");
+                    if (!tipoAbastecimentoSelect) console.error("Elemento tipoAbastecimentoSelect não encontrado.");
+                    if (!numeroOnibusInput || !litrosInput || !motoristaInput || !numeroControleInput || !quemAbasteceuInput || !quilometragemInput || !horaInput || !dataInput || !tipoFrotaSelect || !tipoAbastecimentoSelect) {
+                        console.error("Um ou mais elementos do formulário não foram encontrados.");
+                        return;
+                    }
+
+                    const data = {
+                        numeroOnibus: numeroOnibusInput.value,
+                        litros: litrosInput.value,
+                        motorista: motoristaInput.value,
+                        numeroControle: numeroControleInput.value,
+                        quemAbasteceu: quemAbasteceuInput.value,
+                        quilometragem: quilometragemInput.value,
+                        hora: horaInput.value,
+                        data: dataInput.value,
+                        tipoDeFrota: tipoFrotaSelect.value,
+                        tipoAbastecimento: tipoAbastecimentoSelect.value
+                    };
+
+                    fetch("/api/gastos", {
+                        method: "POST",
+                        headers: {
+                            "Content-Type": "application/json"
+                        },
+                        body: JSON.stringify(data)
+                    })
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error("Erro na resposta do servidor");
+                        }
+                        return response.json();
+                    })
+                    .then(data => {
+                        const messageElement = document.getElementById("message");
+                        if (messageElement) {
+                            messageElement.innerText = "Abastecimento adicionado com sucesso";
+                        }
+                        // Limpar formulário
+                        if (numeroOnibusInput) numeroOnibusInput.value = "";
+                        if (litrosInput) litrosInput.value = "";
+                        if (motoristaInput) motoristaInput.value = "";
+                        if (numeroControleInput) numeroControleInput.value = "";
+                        if (quemAbasteceuInput) quemAbasteceuInput.value = "";
+                        if (quilometragemInput) quilometragemInput.value = "";
+                        if (horaInput) horaInput.value = "";
+                        if (dataInput) dataInput.value = new Date().toISOString().split("T")[0];
+                        if (tipoFrotaSelect) tipoFrotaSelect.selectedIndex = 0;
+                        if (tipoAbastecimentoSelect) tipoAbastecimentoSelect.selectedIndex = 0;
+                    })
+                    .catch(error => {
+                        console.error("Error:", error);
+                    });
+                });
+            }
+
+            const submitReabastecerBtn = document.getElementById("submitReabastecer");
+            if (submitReabastecerBtn) {
+                submitReabastecerBtn.addEventListener("click", function () {
+                    const litrosReabastecerInput = document.getElementById("litrosReabastecerInput");
+                    if (!litrosReabastecerInput) {
+                        console.error("Elemento litrosReabastecerInput não encontrado.");
+                        return;
+                    }
+                    const litrosReabastecer = litrosReabastecerInput.value;
+
+                    fetch("/api/reabastecer", {
+                        method: "POST",
+                        headers: {
+                            "Content-Type": "application/json"
+                        },
+                        body: JSON.stringify({ litros: litrosReabastecer })
+                    })
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error("Erro na resposta do servidor");
+                        }
+                        return response.json();
+                    })
+                    .then(data => {
+                        const messageElement = document.getElementById("message");
+                        if (messageElement) {
+                            messageElement.innerText = "Reabastecimento realizado com sucesso. Nova quantidade: " + data.nova_quantidade;
+                        }
+                        if (litrosReabastecerInput) litrosReabastecerInput.value = "";
+                        atualizarQuantidadeDisponivel();
+                    })
+                    .catch(error => {
+                        console.error("Error:", error);
+                    });
+                });
+            }
+
+            function atualizarQuantidadeDisponivel() {
+                fetch("/api/combustivel/disponivel")
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error("Erro ao obter dados do servidor");
+                        }
+                        return response.json();
+                    })
+                    .then(data => {
+                        const quantidadeDisponivelSpan = document.getElementById("quantidadeDisponivel");
+                        if (quantidadeDisponivelSpan) {
+                            quantidadeDisponivelSpan.innerText = data.quantidade;
+                        }
+                    })
+                    .catch(error => {
+                        console.error("Erro ao obter quantidade disponível:", error);
+                        const quantidadeDisponivelSpan = document.getElementById("quantidadeDisponivel");
+                        if (quantidadeDisponivelSpan) {
+                            quantidadeDisponivelSpan.innerText = "Erro ao obter dados";
+                        }
+                    });
+            }
+
+            atualizarQuantidadeDisponivel();
+        });
+    </script>
+    <script>
+        document
+            .getElementById("irParaAbastecimentoButton")
+            .addEventListener("click", function () {
+                window.location.href = "/gastos"; // Corrigido para acessar a rota correta no backend
+            });
+    </script>
+</body>
+</html>

@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Abastecimento</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style_gastos.css') }}">
+</head>
+<body>
+    <header>
+    <img src="{{ url_for('static', filename='LOGO QUALITAT.png') }}" alt="Logo Qualitat" width="300" height="auto">
+    <h1>Lista de Abastecimento</h1>
+    </header>
+    <br><br/>
+    <label for="numeroOnibusSelect">Selecionar Número do Ônibus:</label>
+    <select id="numeroOnibusSelect">
+        <option value="">Todos</option>
+    </select>
+
+    <label for="motoristaSelect">Selecionar Motorista:</label>
+    <select id="motoristaSelect">
+        <option value="">Todos</option>
+    </select>
+
+    <label for="startDate">Data de Início:</label>
+    <input type="date" id="startDate">
+
+    <label for="endDate">Data de Fim:</label>
+    <input type="date" id="endDate">
+
+    <button id="filtrarButton">Filtrar</button>
+    <button id="downloadButton">Baixar Relatório</button>
+
+    <script>
+        // Função para carregar dados iniciais
+        function loadInitialData() {
+            console.log('Carregando dados iniciais...'); // Log para indicar que a função foi chamada
+            fetch('/api/gastos/view')
+                .then(response => {
+                    console.log('Resposta recebida:', response); // Log da resposta
+                    if (!response.ok) {
+                        throw new Error('Erro na resposta do servidor');
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    console.log('Dados recebidos:', data); // Log dos dados recebidos
+                    if (!data || !data.data || !Array.isArray(data.data)) {
+                        throw new Error('Estrutura de dados inválida da API');
+                    }
+                    const tbody = document.getElementById('gastosTableBody');
+                    const uniqueBusNumbers = Array.isArray(data.unique_bus_numbers) 
+                        ? data.unique_bus_numbers 
+                        : [];
+                    const numeroOnibusSelect = document.getElementById('numeroOnibusSelect');
+                    numeroOnibusSelect.innerHTML = '<option value="">Todos</option>'; // Limpa as opções anteriores
+                    uniqueBusNumbers.forEach(numero => {
+                        const option = document.createElement('option');
+                        option.value = numero;
+                        option.textContent = numero;
+                        numeroOnibusSelect.appendChild(option); // Adiciona as opções ao select
+                    });
+
+                    // Popular select de motoristas únicos
+                    const uniqueMotoristas = [...new Set(data.data.map(g => g.Motorista))];
+                    const motoristaSelect = document.getElementById('motoristaSelect');
+                    motoristaSelect.innerHTML = '<option value="">Todos</option>'; // Limpa as opções anteriores
+                    uniqueMotoristas.forEach(motorista => {
+                        const option = document.createElement('option');
+                        option.value = motorista;
+                        option.textContent = motorista;
+                        motoristaSelect.appendChild(option);
+                    });
+
+                    tbody.innerHTML = ''; // Limpa a tabela antes de adicionar novos dados
+                    data.data.forEach(gasto => {
+                        const row = document.createElement('tr');
+                        row.innerHTML = `
+                            <td>${gasto.id}</td>
+                            <td>${gasto.NumeroOnibus}</td>
+                            <td>${gasto.Tipo_de_Frota}</td>
+                            <td>${gasto.Litros}</td>
+                            <td>${gasto.Motorista}</td>
+                            <td>${(() => {
+                                // Formatar data para DD/MM/AAAA corrigindo deslocamento de fuso horário
+                                const d = new Date(gasto.Data + 'T00:00:00');
+                                const day = String(d.getDate()).padStart(2, '0');
+                                const month = String(d.getMonth() + 1).padStart(2, '0');
+                                const year = d.getFullYear();
+                                return `${day}/${month}/${year}`;
+                            })()}</td>
+                            <td>${(() => {
+                                // Exibir hora no formato HH:MM:SS sem deslocamento do fuso horário
+                                const horaStr = gasto.Hora || '';
+                                const match = horaStr.match(/^(\d{2}:\d{2}:\d{2})/);
+                                return match ? match[1] : horaStr;
+                            })()}</td>
+                            <td>${gasto.Numero_de_controle}</td>
+                            <td>${gasto.quem_abasteceu}</td>
+                            <td>${gasto.quilometragem}</td>
+                            <td>${Number(gasto.media).toFixed(2)}</td>
+                        `;
+                        tbody.appendChild(row);
+                    });
+                })
+                .catch(error => {
+                    console.error('Erro ao carregar dados iniciais:', error);
+                    document.getElementById('gastosTableBody').innerHTML = 
+                        '<tr><td colspan="11" style="color: red; text-align: center;">Erro ao carregar dados: ' + error.message + '</td></tr>';
+                });
+        }
+    </script>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Número do Ônibus</th>
+                <th>Tipo de frota</th>
+                <th>Litros</th>
+                <th>Motorista</th>
+                <th>Data</th>
+                <th>Hora</th>
+                <th>Número de Controle</th>
+                <th>Quem Abasteceu</th>
+                <th>Quilometragem</th>
+                <th>Média</th>
+            </tr>
+        </thead>
+        <tbody id="gastosTableBody">
+        </tbody>
+    </table>
+    <a href="/">Voltar</a>
+
+    <script>
+        document.getElementById('filtrarButton').addEventListener('click', function() {
+            const selectedValue = document.getElementById('numeroOnibusSelect').value;
+            const startDate = document.getElementById('startDate').value;
+            const endDate = document.getElementById('endDate').value;
+
+            // Monta a URL com os parâmetros de filtragem
+            let url = '/api/gastos/filtrar?';
+        if (selectedValue) {
+            url += `numero_onibus=${selectedValue}&`;
+        }
+        const motoristaValue = document.getElementById('motoristaSelect').value;
+        if (motoristaValue) {
+            url += `motorista=${encodeURIComponent(motoristaValue)}&`;
+        }
+        if (startDate) {
+            url += `start_date=${startDate}&`;
+        }
+        if (endDate) {
+            url += `end_date=${endDate}&`;
+        }
+
+            // Remove o último '&' se existir
+            url = url.slice(0, -1);
+
+            fetch(url)
+                .then(response => response.json())
+                .then(data => {
+                    const tbody = document.getElementById('gastosTableBody');
+                    tbody.innerHTML = ''; // Limpa a tabela antes de adicionar novos dados
+                    console.log('Dados filtrados recebidos:', data); // Log dos dados recebidos
+                    data.forEach(gasto => {
+                        const row = document.createElement('tr');
+                        row.innerHTML = `
+                            <td>${gasto.id}</td>
+                            <td>${gasto.NumeroOnibus}</td>
+                            <td>${gasto.Tipo_de_Frota}</td>
+                            <td>${gasto.Litros}</td>
+                            <td>${gasto.Motorista}</td>
+                            <td>${(() => {
+                                // Formatar data para DD/MM/AAAA corrigindo deslocamento de fuso horário
+                                const d = new Date(gasto.Data + 'T00:00:00');
+                                const day = String(d.getDate()).padStart(2, '0');
+                                const month = String(d.getMonth() + 1).padStart(2, '0');
+                                const year = d.getFullYear();
+                                return `${day}/${month}/${year}`;
+                            })()}</td>
+                            <td>${(() => {
+                            // Remove o deslocamento do fuso horário, exibe apenas HH:MM:SS
+                            const horaStr = gasto.Hora || '';
+                            const match = horaStr.match(/^(\d{2}:\d{2}:\d{2})/);
+                            return match ? match[1] : horaStr;
+                        })()}</td>
+                            <td>${gasto.Numero_de_controle}</td>
+                            <td>${gasto.quem_abasteceu}</td>
+                            <td>${gasto.quilometragem}</td>
+                            <td>${Number(gasto.media).toFixed(2)}</td>
+                        `;
+                        tbody.appendChild(row);
+                    });
+                })
+                .catch(error => console.error('Erro ao filtrar dados:', error));
+        });
+
+        document.getElementById('downloadButton').addEventListener('click', function() {
+            const selectedValue = document.getElementById('numeroOnibusSelect').value;
+            const motoristaValue = document.getElementById('motoristaSelect').value;
+            const startDate = document.getElementById('startDate').value;
+            const endDate = document.getElementById('endDate').value;
+
+            // Monta a URL com os parâmetros de download
+            let url = '/api/gastos/download?';
+            if (selectedValue) {
+                url += `numero_onibus=${selectedValue}&`;
+            }
+            if (motoristaValue) {
+                url += `motorista=${encodeURIComponent(motoristaValue)}&`;
+            }
+            if (startDate) {
+                url += `start_date=${startDate}&`;
+            }
+            if (endDate) {
+                url += `end_date=${endDate}&`;
+            }
+
+            // Remove o último '&' se existir
+            url = url.slice(0, -1);
+
+            window.location.href = url; // Chama a nova rota para download
+        });
+
+        // Carregar dados iniciais ao carregar a página
+        loadInitialData();
+    </script>
+</body>
+</html>
